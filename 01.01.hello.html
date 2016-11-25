@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Hello React</title>
+		<link href="01.01.hello.style.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="app">
+			<!-- my app renders here -->
+		</div>
+		<script src="react/build/react.js"></script>
+		<script src="react/build/react-dom.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+		<script>
+			ReactDOM.render(
+					React.DOM.h1(
+							{
+								id: "my-heading",
+								style: {
+									background: "#393973",
+									color: "#78AAD8",
+									fontFamily: "'Fira Sans', sans-serif"
+								},
+								className: "pretty"
+							},
+							React.DOM.span(null,
+									React.DOM.em(null, "Hell"),
+									"o"),
+							", it's me..."),
+					document.getElementById("app")
+			)
+		</script>
+	</body>
+</html>
