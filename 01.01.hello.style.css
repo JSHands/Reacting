@@ -2,4 +2,17 @@
   padding: 20px;
   margin: 40px; }
 
+.frameworks {
+  background: #402033;
+  color: white;
+  padding: 20px;
+  margin: 40px;
+  font-family: 'Fira Sans', sans-serif; }
+
+.framework {
+  padding: 20px; }
+  .framework a {
+    color: chocolate;
+    text-decoration: none; }
+
 /*# sourceMappingURL=01.01.hello.style.css.map */

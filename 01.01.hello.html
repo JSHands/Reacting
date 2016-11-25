@@ -13,23 +13,103 @@
 		<script src="react/build/react-dom.js"></script>
 		<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
 		<script>
+			
+			const app = document.getElementById("app");
+			
+			let CustomComponent = React.createClass(
+					{
+						render: function () {
+							// This method must return a React component
+							return React.DOM.div(
+									{
+										className: "framework"
+									},
+									React.DOM.span(
+											null,
+											"I am ",
+											React.DOM.em(null, this.props.name),
+											React.DOM.br(null),
+											`I am a(n) ${this.props.language} framework created by ${this.props.developer}.`,
+											React.DOM.br(null),
+											`You can find more information about me by visiting `,
+											React.DOM.a(
+													{
+														href: this.props.website
+													},
+													this.props.website),
+											`.`
+									)
+							)
+						},
+						propTypes: {
+							name: React.PropTypes.string.isRequired,
+							developer: React.PropTypes.string.isRequired,
+							status: React.PropTypes.string,
+							language: React.PropTypes.string,
+							website: React.PropTypes.string
+						},
+						getDefaultProps: function () {
+							return {
+								status: "Unknown",
+								language: "Unspecified",
+								website: "www.google.com"
+							}
+						}
+					}
+			);
+			
+			// To create several instances of a component, you can use a factory
+			
+			const CustomComponentFactory = React.createFactory(CustomComponent);
+			
+			// Render multiple components by wrapping them into an enclosing element
+			
 			ReactDOM.render(
-					React.DOM.h1(
-							{
-								id: "my-heading",
-								style: {
-									background: "#393973",
-									color: "#78AAD8",
-									fontFamily: "'Fira Sans', sans-serif"
-								},
-								className: "pretty"
-							},
-							React.DOM.span(null,
-									React.DOM.em(null, "Hell"),
-									"o"),
-							", it's me..."),
-					document.getElementById("app")
-			)
+					React.DOM.div(
+							null,
+							React.DOM.h1(
+									{
+										id: "my-heading",
+										style: {
+											background: "#393973",
+											color: "#78AAD8",
+											fontFamily: "'Fira Sans', sans-serif"
+										},
+										className: "pretty"
+									},
+									React.DOM.span(null,
+											React.DOM.em(null, "Frameworks")
+									),
+									React.DOM.strong(null, " of the Month")
+							),
+							React.DOM.div(
+									{
+										className: "frameworks"
+									},
+									React.createElement(CustomComponent, {
+										name: "React",
+										developer: "Facebook",
+										language: "JavaScript",
+										state: "Active",
+										website: "https://facebook.github.io/react/"
+									}),
+									CustomComponentFactory({
+										name: "Angular",
+										developer: "Google",
+										language: "JavaScript",
+										state: "Active",
+										website: "https://angularjs.org/"
+									}),
+									CustomComponentFactory({
+										name: "Reactangular",
+										developer: "a drunk panda",
+										language: "BambOO"
+									})
+							)
+					),
+					app
+			);
+			
 		</script>
 	</body>
 </html>
