@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Hello React</title>
+		<link rel="stylesheet" href="normalize.css">
 		<link href="01.01.hello.style.css" rel="stylesheet">
 	</head>
 	<body>
@@ -58,6 +59,48 @@
 					}
 			);
 			
+			let TextAreaCounter = React.createClass(
+					{
+						propTypes: {
+							text: React.PropTypes.string
+						},
+						getDefaultProps: function () {
+							return {
+								text: ""
+							}
+						},
+						render: function () {
+							return React.DOM.div(
+									null,
+									React.DOM.span(
+											null,
+											`Enter feedback on the frameworks above:`
+									),
+									React.DOM.textarea(
+											{
+												value: this.state.text,
+												onChange: this._textChange
+											}
+									),
+									React.DOM.span(
+											null,
+											`Word count: ${this.state.text.length}`
+									)
+							)
+						},
+						getInitialState: function () {
+							return {
+								text: this.props.text
+							}
+						},
+						_textChange: function (ev) {
+							this.setState({
+								text: ev.target.value
+							});
+						}
+					}
+			);
+			
 			// To create several instances of a component, you can use a factory
 			
 			const CustomComponentFactory = React.createFactory(CustomComponent);
@@ -67,24 +110,28 @@
 			ReactDOM.render(
 					React.DOM.div(
 							null,
-							React.DOM.h1(
+							React.DOM.div(
 									{
-										id: "my-heading",
+										className: "banner block",
 										style: {
 											background: "#393973",
 											color: "#78AAD8",
 											fontFamily: "'Fira Sans', sans-serif"
-										},
-										className: "pretty"
+										}
 									},
-									React.DOM.span(null,
-											React.DOM.em(null, "Frameworks")
-									),
-									React.DOM.strong(null, " of the Month")
+									React.DOM.h1(
+											{
+												id: "my-heading",
+											},
+											React.DOM.span(null,
+													React.DOM.em(null, "Frameworks")
+											),
+											React.DOM.strong(null, " of the Month")
+									)
 							),
 							React.DOM.div(
 									{
-										className: "frameworks"
+										className: "frameworks block"
 									},
 									React.createElement(CustomComponent, {
 										name: "React",
@@ -105,7 +152,16 @@
 										developer: "a drunk panda",
 										language: "BambOO"
 									})
+							),
+							React.DOM.div(
+									{
+										className: "feedback block"
+									},
+									React.createElement(TextAreaCounter, {
+										text: "React is really cool."
+									})
 							)
+							
 					),
 					app
 			);

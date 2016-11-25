@@ -1,18 +1,43 @@
-.pretty {
-  padding: 20px;
+body {
   margin: 40px; }
+
+.div {
+  padding: 0;
+  margin: 0; }
+
+h1 {
+  padding: 0;
+  margin: 0; }
+
+.block {
+  margin-bottom: 20px;
+  padding: 40px; }
 
 .frameworks {
   background: #402033;
   color: white;
-  padding: 20px;
-  margin: 40px;
   font-family: 'Fira Sans', sans-serif; }
 
 .framework {
-  padding: 20px; }
+  padding-bottom: 30px; }
   .framework a {
     color: chocolate;
     text-decoration: none; }
+
+.framework:last-child {
+  padding-bottom: 0; }
+
+.feedback {
+  background: #58362B;
+  color: white; }
+  .feedback span {
+    display: block;
+    clear: both; }
+  .feedback span:first-child {
+    margin-bottom: 20px; }
+  .feedback span:last-child {
+    margin-top: 20px; }
+  .feedback textarea {
+    padding: 20px; }
 
 /*# sourceMappingURL=01.01.hello.style.css.map */
